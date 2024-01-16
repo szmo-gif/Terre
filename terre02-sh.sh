@@ -11,4 +11,4 @@ if [ ! $# -lt 1 ]; then
 fi
 
 
-bash prog.sh Shell is fun
+bash terre02-sh.sh Shell is fun
