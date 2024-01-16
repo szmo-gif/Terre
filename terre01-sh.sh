@@ -1,4 +1,4 @@
-chemin_du_fichier="nom_du_fichier.sh"
+chemin_du_fichier="terre01-sh.sh"
 
 nom_du_fichier=$(basename "$chemin_du_fichier")
 
