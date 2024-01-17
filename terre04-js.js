@@ -1,4 +1,7 @@
 function pair_impair(nombre) {
+    if (isNaN(nombre))
+        throw new  Error("me prends pas pour une banane!");
+
     if (nombre % 2 === 0) {
         return "Pair";
     } else {
@@ -14,16 +17,15 @@ const interface = readline.createInterface({
 
 interface.question("Entrer un chiffre : ", function(nombre) {
 
-    const resultat = pair_impair(nombre);
-
-    console.log(`${resultat}`);
+    try {
+        const resultat = pair_impair(nombre);
+        console.log(`${resultat}`);
+    }
+    catch (error) {
+        console.error(error.message);
+    }
+   
+   
 
     interface.close();
 });
-
-
-
-//console.log(pair_impair(4))
-//console.log(pair_impair(5))
-//console.log(pair_impair(-2))
-//console.log(pair_impair(-5))
