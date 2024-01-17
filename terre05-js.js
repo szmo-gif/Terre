@@ -3,11 +3,10 @@ function division(numb1, numb2) {
         throw new Error("Choisissez un nombre");
     }
 
-    if (Number.isInteger(numb1 / numb2)) {
-        console.log(numb1 / numb2);
-    } else {
-        console.log("Non divisible");
-    }
+    const resultat = Math.floor(numb1 / numb2);
+    const reste = numb1 % numb2;
+
+    console.log(`résultat: ${resultat} \nreste: ${reste}`);
 }
 
 const readline = require('readline');
