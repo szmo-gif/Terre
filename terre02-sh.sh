@@ -11,4 +11,5 @@ if [ ! $# -lt 1 ]; then
     exit 0
 fi
 
-bash terre02-sh.sh je suis solide
+read -p "entrer une phrase: " nouvelle_phrase
+bash terre02-sh.sh "$nouvelle_phrase"
