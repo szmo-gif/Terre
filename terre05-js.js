@@ -4,7 +4,7 @@ function division(numb1, numb2) {
     }
 
     const resultat = Math.floor(numb1 / numb2);
-    const reste = numb1 % numb2;
+    const reste = numb1-resultat*numb2;
 
     console.log(`résultat: ${resultat} \nreste: ${reste}`);
 }
