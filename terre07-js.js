@@ -9,8 +9,15 @@ try {
         throw new Error("Erreur : la chaîne ne doit pas contenir des chiffres.");
     }
 
-    if (process.argv.length !== 3) {
-        throw new Error("Erreur : il doit y avoir une seule chaîne.");
+    let nombre_arguments = 0;
+    for (let arg of process.argv) {
+        if (arg !== process.argv[0] && arg !== process.argv[1]) {
+            nombre_arguments++;
+        }
+    }
+
+    if (nombre_arguments !== 1) {
+        throw new Error("Erreur : il doit y avoir qu'une seule chaîne.");
     }
 
     let nombre_caracteres = 0;
