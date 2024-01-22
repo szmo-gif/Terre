@@ -13,19 +13,19 @@ try {
     process.exit(1);
 }
 
-if (heureDonnee < "11:59") {
+if (heureDonnee <= "11:59") {
     if (heureDonnee === "00:00") {
         console.log("Il est 12:00 AM");
     } else {
         console.log(`Il est ${heureDonnee} AM`);
     }
 } else {
-    if (heureDonnee === "12:00") {
-        console.log("Il est 12:00 PM");
+    if ("12:00" <= heureDonnee && heureDonnee <= "12:59" ) {
+        console.log(`Il est ${heureDonnee} PM`);
     } else {
         let heure24 = parseInt(heureDonnee.split(":")[0], 10);
         let minute = heureDonnee.split(":")[1];
         let heure12 = heure24 - 12;
-        console.log(`${heure12}:${minute}`);
+        console.log(`Il est ${heure12}:${minute} PM`);
     }
 }
