@@ -1,18 +1,27 @@
-function convertirFormat12hEn24h(heure12h) {
-    const [heure, minute, suffixe] = heure12h.match(/(\d+):(\d+)\s?([APMapm]{2})/).slice(1,4);
-    
-    let heure24h = parseInt(heure, 10);
+const heureDonnee = process.argv[2] + process.argv[3]?.toLowerCase();
 
-    if (suffixe.toLowerCase() === 'pm' && heure24h < 12) {
-        heure24h += 12;
-    } else if (suffixe.toLowerCase() === 'am' && heure24h === 12) {
-        heure24h = 0;
-    }
+let heure24;
 
-    return `${heure24h.toString().padStart(2, '0')}:${minute}`;
+if (heureDonnee.includes("am") && heureDonnee >= "01:00" && heureDonnee < "12:00") {
+    heure24 = heureDonnee.replace("am", '');
+
+} else if (heureDonnee.includes("pm") && heureDonnee >= "01:00" && heureDonnee < "12:00") {
+    let heure12 = parseInt(heureDonnee.split(":")[0], 10);
+    let minute = parseInt(heureDonnee.split(":")[1], 10);
+    heure24 = `${heure12 + 12}:${minute}`;
+
+} else if (heureDonnee.includes("am") && heureDonnee >= "12:00" && heureDonnee < "13:00") {
+    let heure12 = parseInt(heureDonnee.split(":")[0], 10);
+    let minute = parseInt(heureDonnee.split(":")[1], 10);
+    heure24 = `${heure12 - 12}:${minute}`;
+
+} else if (heureDonnee.includes("pm") && heureDonnee >= "12:00" && heureDonnee < "13:00") {
+    let minute = parseInt(heureDonnee.split(":")[1], 10);
+    heure24 = `12:${minute}`;
+
+} else {
+    console.log("erreur");
+    process.exit(1);  
 }
 
-// Exemple d'utilisation
-const heureFormat12h = process.argv[2];
-const heureFormat24h = convertirFormat12hEn24h(heureFormat12h);
-console.log(heureFormat24h);  // Affiche "15:30"
+console.log(`${heure24}`);
